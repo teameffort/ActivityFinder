@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{79bcb27d-0fe3-4ec0-ac2d-8e2f0361b9ea}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -64,5 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TE.ActivityFinder.DB.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TE.ActivityFinder.DB.publish.xml" />
   </ItemGroup>
 </Project>
