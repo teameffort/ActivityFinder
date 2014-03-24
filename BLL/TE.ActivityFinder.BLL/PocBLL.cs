@@ -8,5 +8,13 @@ namespace TE.ActivityFinder.BLL
 {
     public class PocBLL
     {
+
+        public bool Test()
+        {
+
+            return true;
+         
+        }
+
     }
 }
