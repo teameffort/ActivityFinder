@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[act_Activity]
+(
+	[ActivityId] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Name] VARCHAR(255) NOT NULL, 
+    [StartDT] DATETIME NOT NULL, 
+    [EndDT] DATETIME NOT NULL, 
+    [IsActive] BIT NOT NULL DEFAULT 1 
+)

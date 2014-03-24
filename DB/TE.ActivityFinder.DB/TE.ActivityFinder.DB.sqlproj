@@ -58,4 +58,11 @@
   <ItemGroup>
     <Folder Include="Properties" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="act_Activity.sql" />
+    <Build Include="loc_Location.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="TE.ActivityFinder.DB.refactorlog" />
+  </ItemGroup>
 </Project>

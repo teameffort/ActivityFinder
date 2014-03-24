@@ -15,9 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TE.ActivityFinder.WCF", "WC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WCF", "WCF", "{627EB13E-F2A6-46D6-869F-ED203621EACF}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TE.ActivityFinder.DB", "DB\TE.ActivityFinder.DB\TE.ActivityFinder.DB.sqlproj", "{79BCB27D-0FE3-4EC0-AC2D-8E2F0361B9EA}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{D8531774-B32F-4A82-88AE-12C9BB8678BD}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TE.ActivityFinder.DB", "DB\TE.ActivityFinder.DB\TE.ActivityFinder.DB.sqlproj", "{79BCB27D-0FE3-4EC0-AC2D-8E2F0361B9EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

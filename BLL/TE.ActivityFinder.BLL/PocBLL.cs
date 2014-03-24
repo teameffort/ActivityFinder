@@ -9,11 +9,16 @@ namespace TE.ActivityFinder.BLL
     public class PocBLL
     {
 
-        public bool Test()
+        public bool GetLatLong()
         {
 
             return true;
          
+        }
+
+        public bool SaveLatLong(string latitide, string longitude, ref string retMsg)
+        {
+            return true;
         }
 
     }
