@@ -57,10 +57,19 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="act_Activity.sql" />
-    <Build Include="loc_Location.sql" />
+    <Build Include="dbo\Tables\act_ActivityType.sql" />
+    <Build Include="Security\teameffort.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="dbo\Stored Procedures\loc_InsLocation.sql" />
+    <Build Include="dbo\Stored Procedures\act_GetActivities.sql" />
+    <Build Include="dbo\Tables\act_Activity.sql" />
+    <Build Include="dbo\Tables\loc_Location.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TE.ActivityFinder.DB.refactorlog" />
