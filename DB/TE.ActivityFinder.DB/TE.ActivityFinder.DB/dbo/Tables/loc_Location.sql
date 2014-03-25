@@ -6,4 +6,3 @@
     PRIMARY KEY CLUSTERED ([LocationId] ASC)
 );
 
-

@@ -59,14 +59,14 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PocService.svc" />
+    <Content Include="ActivityService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PocService.svc.cs">
-      <DependentUpon>PocService.svc</DependentUpon>
+    <Compile Include="ActivityService.svc.cs">
+      <DependentUpon>ActivityService.svc</DependentUpon>
     </Compile>
-    <Compile Include="IPocService.cs" />
+    <Compile Include="IActivityService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +79,16 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\BLL\TE.ActivityFinder.BLL\TE.ActivityFinder.BLL.csproj">
+      <Project>{a6dbaad8-a8d2-430a-acee-5df023ddf148}</Project>
+      <Name>TE.ActivityFinder.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DAL\TE.ActivityFinder.DAL\TE.ActivityFinder.DAL.csproj">
+      <Project>{66a79e12-0d6c-4e2c-8049-a1739bf613cc}</Project>
+      <Name>TE.ActivityFinder.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

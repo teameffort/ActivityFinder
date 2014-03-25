@@ -12,3 +12,6 @@ BEGIN
     values (@Name,@Latitude,@Longitude)
 
 END
+
+
+

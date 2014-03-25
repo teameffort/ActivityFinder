@@ -15,26 +15,26 @@ namespace TE.ActivityFinder.DAL
             {
                 if (_connectionString == null) 
                 {
-                    _connectionString = ConfigurationManager.ConnectionStrings["TE.ActivityFinder.POC.DAL.Properties.Settings.TE_ActivityFinder_POC_DBConnectionString"].ConnectionString;
+                    _connectionString = ConfigurationManager.ConnectionStrings["TE.ActivityFinder.DAL.Properties.Settings.TE_ActivityFinder_DBConnectionString"].ConnectionString;
                 }
                 return _connectionString; 
             }
         }
 
-        private PocDataContext _poc;
-        public PocDataContext Poc
+        private ActivityDataContext _activity;
+        public ActivityDataContext Activity
         {
             get
             {
-                if (_poc == null)
+                if (_activity == null)
                 {
-                    _poc = new PocDataContext(ConnectionString);
+                    _activity = new ActivityDataContext(ConnectionString);
                 }
-                return _poc;
+                return _activity;
             }
             set
             {
-                _poc = value;
+                _activity = value;
             }
         }
 
@@ -44,9 +44,9 @@ namespace TE.ActivityFinder.DAL
 
         public void Dispose()
         {
-            if (_poc != null)
+            if (_activity != null)
             {
-                _poc.Dispose();
+                _activity.Dispose();
             }
         }
 

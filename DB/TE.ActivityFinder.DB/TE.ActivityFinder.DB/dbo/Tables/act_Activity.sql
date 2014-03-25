@@ -11,4 +11,3 @@
     CONSTRAINT [FK_act_Activity_loc_Location] FOREIGN KEY ([LocationId]) REFERENCES [dbo].[loc_Location] ([LocationId])
 );
 
-

@@ -7,14 +7,14 @@
     <Name>TE.ActivityFinder.DB</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{79bcb27d-0fe3-4ec0-ac2d-8e2f0361b9ea}</ProjectGuid>
+    <ProjectGuid>{eafe0930-4f84-467d-99f2-504075861b45}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
     <RootNamespace>TE.ActivityFinder.DB</RootNamespace>
     <AssemblyName>TE.ActivityFinder.DB</AssemblyName>
-    <ModelCollation>1033, CI</ModelCollation>
+    <ModelCollation>1033,CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -23,6 +23,8 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -63,16 +65,15 @@
     <Folder Include="dbo\Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
+    <Build Include="dbo\Tables\loc_Location.sql" />
+    <Build Include="dbo\Tables\act_Activity.sql" />
     <Build Include="dbo\Tables\act_ActivityType.sql" />
     <Build Include="Security\teameffort.sql" />
+    <Build Include="Security\teameffort_1.sql" />
     <Build Include="Security\RoleMemberships.sql" />
-    <Build Include="dbo\Stored Procedures\loc_InsLocation.sql" />
     <Build Include="dbo\Stored Procedures\act_GetActivities.sql" />
-    <Build Include="dbo\Tables\act_Activity.sql" />
-    <Build Include="dbo\Tables\loc_Location.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <RefactorLog Include="TE.ActivityFinder.DB.refactorlog" />
+    <Build Include="dbo\Stored Procedures\loc_InsLocation.sql" />
+    <Build Include="Security\Permissions.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TE.ActivityFinder.DB.publish.xml" />
