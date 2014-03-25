@@ -54,6 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\BLL\TE.ActivityFinder.BLL\TE.ActivityFinder.BLL.csproj">
       <Project>{a6dbaad8-a8d2-430a-acee-5df023ddf148}</Project>
       <Name>TE.ActivityFinder.BLL</Name>
@@ -62,9 +65,6 @@
       <Project>{66a79e12-0d6c-4e2c-8049-a1739bf613cc}</Project>
       <Name>TE.ActivityFinder.DAL</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
