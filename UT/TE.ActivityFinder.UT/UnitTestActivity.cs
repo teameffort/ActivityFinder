@@ -7,7 +7,7 @@ namespace TE.ActivityFinder.UT
     public class UnitTestActivity
     {
         [TestMethod]
-        public void TestMethod_act_GetActivities()
+        public void TestMethod_act_GetActivitiesBLL()
         {
             var result = new ActivityFinder.BLL.ActivityBLL().act_GetActivities();
             Assert.IsTrue(result.Count > 0);

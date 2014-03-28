@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="TE.ActivityFinder.WCF.Service1" CodeBehind="ActivityService.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="TE.ActivityFinder.WCF.ActivityService" CodeBehind="ActivityService.svc.cs" %>

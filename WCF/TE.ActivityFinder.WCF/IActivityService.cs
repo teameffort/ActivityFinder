@@ -16,6 +16,7 @@ namespace TE.ActivityFinder.WCF
     {
 
         [OperationContract]
+        [WebGet(ResponseFormat=WebMessageFormat.Json)]
         List<act_GetActivitiesResult> act_GetActivities();
 
     }
