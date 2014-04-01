@@ -42,6 +42,12 @@
     <Compile Include="GenRestful.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TE.ActivityFinder.Lib.CodeGen.Common\TE.ActivityFinder.Lib.CodeGen.Common.csproj">
+      <Project>{2403f32e-ebba-42de-beb3-75165d3a0541}</Project>
+      <Name>TE.ActivityFinder.Lib.CodeGen.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

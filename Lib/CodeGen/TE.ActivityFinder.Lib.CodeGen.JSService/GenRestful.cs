@@ -97,7 +97,7 @@ namespace TE.ActivityFinder.Lib.CodeGen.JSService
             List<Type> TypeList;
 
             Console.WriteLine("CodeGen: load and reflect assembly: " + assemblyFile);
-            TypeList = Assembly.LoadFile(assemblyFile).GetTypes().Where(t => t.IsPublic).Where(t => !t.IsInterface).ToList();
+            TypeList = Assembly.LoadFile(assemblyFile).GetTypes().Where(t => t.IsPublic).Where(t => !t.IsInterface).Where(t => !t.Name.Contains("Global")).ToList();
             Console.WriteLine("CodeGen: found " + TypeList.Count() + " service(s)");
 
             foreach (Type t in TypeList)

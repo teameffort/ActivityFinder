@@ -123,7 +123,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>$(SolutionDir)Lib\CodeGen\TE.ActivityFinder.Lib.CodeGen.Console\bin\Debug\TE.ActivityFinder.Lib.CodeGen.Console.exe $(ProjectDir)bin\ WCF http://10.211.55.3/TE.ActivityFinder.WCF/ json $(SolutionDir)UI\TE.ActivityFinder.UI.HTML5\Scripts</PostBuildEvent>
+    <PostBuildEvent>$(SolutionDir)Lib\CodeGen\TE.ActivityFinder.Lib.CodeGen.Console\bin\Debug\TE.ActivityFinder.Lib.CodeGen.Console.exe $(ProjectDir)bin\ WCF http://10.211.55.3/TE.ActivityFinder.WCF/ json $(SolutionDir)UI\TE.ActivityFinder.UI.PhoneGapWP8\www\js</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
