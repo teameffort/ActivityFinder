@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TE.ActivityFinder.Lib.CodeGen.Console", "CodeGen\TE.ActivityFinder.Lib.CodeGen.Console\TE.ActivityFinder.Lib.CodeGen.Console.csproj", "{428E42B6-3B2B-4700-ADC9-3C7DAFF3B21E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TE.ActivityFinder.Lib.CodeGen.JSService", "CodeGen\TE.ActivityFinder.Lib.CodeGen.JSService\TE.ActivityFinder.Lib.CodeGen.JSService.csproj", "{3D349FD0-7DDB-4746-A871-37464494F612}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TE.ActivityFinder.Lib.CodeGen.Common", "CodeGen\TE.ActivityFinder.Lib.CodeGen.Common\TE.ActivityFinder.Lib.CodeGen.Common.csproj", "{2403F32E-EBBA-42DE-BEB3-75165D3A0541}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{428E42B6-3B2B-4700-ADC9-3C7DAFF3B21E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{428E42B6-3B2B-4700-ADC9-3C7DAFF3B21E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{428E42B6-3B2B-4700-ADC9-3C7DAFF3B21E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{428E42B6-3B2B-4700-ADC9-3C7DAFF3B21E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D349FD0-7DDB-4746-A871-37464494F612}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D349FD0-7DDB-4746-A871-37464494F612}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D349FD0-7DDB-4746-A871-37464494F612}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D349FD0-7DDB-4746-A871-37464494F612}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2403F32E-EBBA-42DE-BEB3-75165D3A0541}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2403F32E-EBBA-42DE-BEB3-75165D3A0541}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2403F32E-EBBA-42DE-BEB3-75165D3A0541}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2403F32E-EBBA-42DE-BEB3-75165D3A0541}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
