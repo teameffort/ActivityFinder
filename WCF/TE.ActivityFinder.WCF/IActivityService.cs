@@ -7,6 +7,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using TE.ActivityFinder.BLL;
 using TE.ActivityFinder.DAL;
+using TE.ActivityFinder.Lib.CodeGen.Common;
 
 namespace TE.ActivityFinder.WCF
 {
@@ -14,10 +15,16 @@ namespace TE.ActivityFinder.WCF
     [ServiceContract]
     public interface IActivityService
     {
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "act_GetActivities")]
+        List<act_Activity> act_GetActivities();
 
         [OperationContract]
-        [WebGet(ResponseFormat=WebMessageFormat.Json)]
-        List<act_GetActivitiesResult> act_GetActivities();
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "act_GetActivityById/{ActivityId}")]
+        act_Activity act_GetActivityById(string ActivityId);
 
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "loc_InsertLocation/{Name}/{Longitude}/{Latitude}")]
+        bool loc_InsertLocation(string Name, string Longitude, string Latitude);
     }
 }

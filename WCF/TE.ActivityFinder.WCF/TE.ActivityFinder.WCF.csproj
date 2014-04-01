@@ -57,14 +57,21 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="TE.ActivityFinder.Lib.CodeGen.Common">
+      <HintPath>..\..\Lib\CodeGen\TE.ActivityFinder.Lib.CodeGen.Common\bin\Debug\TE.ActivityFinder.Lib.CodeGen.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ActivityService.svc" />
+    <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityService.svc.cs">
       <DependentUpon>ActivityService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IActivityService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,8 +114,6 @@
           <DevelopmentServerPort>56831</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:8081/</IISUrl>
-          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://10.211.55.3:8081/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>http://zablsnlt083:8081</CustomServerUrl>
@@ -117,6 +122,9 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>$(SolutionDir)Lib\CodeGen\TE.ActivityFinder.Lib.CodeGen.Console\bin\Debug\TE.ActivityFinder.Lib.CodeGen.Console.exe $(ProjectDir)bin\ WCF http://10.211.55.3/TE.ActivityFinder.WCF/ json $(SolutionDir)UI\TE.ActivityFinder.UI.HTML5\Scripts</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

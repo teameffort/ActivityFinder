@@ -18,6 +18,7 @@ namespace TE.ActivityFinder.DAL
 	using System.Reflection;
 	using System.Linq;
 	using System.Linq.Expressions;
+	using System.Runtime.Serialization;
 	using System.ComponentModel;
 	using System;
 	
@@ -111,6 +112,7 @@ namespace TE.ActivityFinder.DAL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.act_Activity")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class act_Activity : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -156,12 +158,11 @@ namespace TE.ActivityFinder.DAL
 		
 		public act_Activity()
 		{
-			this._act_ActivityType = default(EntityRef<act_ActivityType>);
-			this._loc_Location = default(EntityRef<loc_Location>);
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivityId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int ActivityId
 		{
 			get
@@ -182,6 +183,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivityTypeId", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public int ActivityTypeId
 		{
 			get
@@ -206,6 +208,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationId", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public int LocationId
 		{
 			get
@@ -230,6 +233,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string Name
 		{
 			get
@@ -250,6 +254,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDT", DbType="DateTime NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.DateTime StartDT
 		{
 			get
@@ -270,6 +275,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDT", DbType="DateTime NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.DateTime EndDT
 		{
 			get
@@ -290,6 +296,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public bool IsActive
 		{
 			get
@@ -396,9 +403,24 @@ namespace TE.ActivityFinder.DAL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			this._act_ActivityType = default(EntityRef<act_ActivityType>);
+			this._loc_Location = default(EntityRef<loc_Location>);
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.act_ActivityType")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class act_ActivityType : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -409,6 +431,8 @@ namespace TE.ActivityFinder.DAL
 		private string _Type;
 		
 		private EntitySet<act_Activity> _act_Activities;
+		
+		private bool serializing;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -422,11 +446,11 @@ namespace TE.ActivityFinder.DAL
 		
 		public act_ActivityType()
 		{
-			this._act_Activities = new EntitySet<act_Activity>(new Action<act_Activity>(this.attach_act_Activities), new Action<act_Activity>(this.detach_act_Activities));
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivityTypeId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int ActivityTypeId
 		{
 			get
@@ -447,6 +471,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string Type
 		{
 			get
@@ -467,10 +492,16 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="act_ActivityType_act_Activity", Storage="_act_Activities", ThisKey="ActivityTypeId", OtherKey="ActivityTypeId")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3, EmitDefaultValue=false)]
 		public EntitySet<act_Activity> act_Activities
 		{
 			get
 			{
+				if ((this.serializing 
+							&& (this._act_Activities.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
 				return this._act_Activities;
 			}
 			set
@@ -510,9 +541,37 @@ namespace TE.ActivityFinder.DAL
 			this.SendPropertyChanging();
 			entity.act_ActivityType = null;
 		}
+		
+		private void Initialize()
+		{
+			this._act_Activities = new EntitySet<act_Activity>(new Action<act_Activity>(this.attach_act_Activities), new Action<act_Activity>(this.detach_act_Activities));
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.loc_Location")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class loc_Location : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -527,6 +586,8 @@ namespace TE.ActivityFinder.DAL
 		private string _Longitude;
 		
 		private EntitySet<act_Activity> _act_Activities;
+		
+		private bool serializing;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -544,11 +605,11 @@ namespace TE.ActivityFinder.DAL
 		
 		public loc_Location()
 		{
-			this._act_Activities = new EntitySet<act_Activity>(new Action<act_Activity>(this.attach_act_Activities), new Action<act_Activity>(this.detach_act_Activities));
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int LocationId
 		{
 			get
@@ -569,6 +630,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string Name
 		{
 			get
@@ -589,6 +651,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Latitude", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string Latitude
 		{
 			get
@@ -609,6 +672,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Longitude", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string Longitude
 		{
 			get
@@ -629,10 +693,16 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="loc_Location_act_Activity", Storage="_act_Activities", ThisKey="LocationId", OtherKey="LocationId")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5, EmitDefaultValue=false)]
 		public EntitySet<act_Activity> act_Activities
 		{
 			get
 			{
+				if ((this.serializing 
+							&& (this._act_Activities.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
 				return this._act_Activities;
 			}
 			set
@@ -672,8 +742,36 @@ namespace TE.ActivityFinder.DAL
 			this.SendPropertyChanging();
 			entity.loc_Location = null;
 		}
+		
+		private void Initialize()
+		{
+			this._act_Activities = new EntitySet<act_Activity>(new Action<act_Activity>(this.attach_act_Activities), new Action<act_Activity>(this.detach_act_Activities));
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
 	}
 	
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class act_GetActivitiesResult
 	{
 		
@@ -696,6 +794,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivityId", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int ActivityId
 		{
 			get
@@ -712,6 +811,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivityTypeId", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public int ActivityTypeId
 		{
 			get
@@ -728,6 +828,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationId", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public int LocationId
 		{
 			get
@@ -744,6 +845,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string Name
 		{
 			get
@@ -760,6 +862,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDT", DbType="DateTime NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.DateTime StartDT
 		{
 			get
@@ -776,6 +879,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDT", DbType="DateTime NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.DateTime EndDT
 		{
 			get
@@ -792,6 +896,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public bool IsActive
 		{
 			get
