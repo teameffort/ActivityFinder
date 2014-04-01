@@ -9,15 +9,16 @@
     <script src="../Scripts/te.activityfinder.wcf.activityservice.js" type="text/javascript"></script>
     <script>
 
-        function ServiceSucceeded(result) {
+        function ServiceSucceeded(msg) {
             if (DataType == "json") {
-                alert("act_GetActivities successful result:" + result);
+               
+                alert("act_GetActivities successful result:" + msg);
             }
         }
 
         $(document).ready(function () {
-            console.log("GetActivities");
-            GetActivities();
+            console.log("act_GetActivities");
+            act_GetActivities();
         });
 
         $(document).ready(function () {

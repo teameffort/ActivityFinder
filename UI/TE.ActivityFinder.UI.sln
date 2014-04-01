@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows Phone
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TE.ActivityFinder.UI.HTML5", "TE.ActivityFinder.UI.HTML5\TE.ActivityFinder.UI.HTML5.csproj", "{10164CEB-E6A9-44EE-BCD7-D78E9BC4EEC8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TE.ActivityFinder.UI.PhoneGapWP8", "TE.ActivityFinder.UI.PhoneGapWP8\TE.ActivityFinder.UI.PhoneGapWP8.csproj", "{3677C1B7-D68B-4CF9-BF8A-E869D437A6DF}"

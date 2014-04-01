@@ -163,9 +163,16 @@
   <ItemGroup>
     <Content Include="config.xml" />
     <Content Include="www\cordova.js" />
+    <Content Include="www\css\bootstrap-theme.css" />
+    <Content Include="www\css\bootstrap-theme.min.css" />
+    <Content Include="www\css\bootstrap.css" />
+    <Content Include="www\css\bootstrap.min.css" />
+    <Content Include="www\css\jumbotron.css" />
+    <Content Include="www\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="www\index.html" />
     <Content Include="www\css\index.css" />
-    <Content Include="www\js\index.js" />
+    <Content Include="www\js\bootstrap.js" />
+    <Content Include="www\js\bootstrap.min.js" />
     <Content Include="www\img\logo.png" />
     <Content Include="Images\appbar.back.rest.png" />
     <Content Include="Images\appbar.close.rest.png" />
@@ -173,6 +180,13 @@
     <Content Include="Images\appbar.next.rest.png" />
     <Content Include="Images\appbar.save.rest.png" />
     <Content Include="Images\appbar.stop.rest.png" />
+    <Content Include="www\js\jquery-2.1.0.intellisense.js" />
+    <Content Include="www\js\jquery-2.1.0.js" />
+    <Content Include="www\js\jquery-2.1.0.min.js" />
+    <Content Include="www\js\te.activityfinder.wcf.activityservice.js" />
+    <Content Include="www\js\te.common.bootstrap.progressbar.js" />
+    <Content Include="www\js\te.common.rest.service.js" />
+    <Content Include="www\js\_references.js" />
     <None Include="cordova\lib\build.js" />
     <None Include="cordova\lib\clean.js" />
     <None Include="cordova\lib\deploy.js" />
@@ -196,6 +210,12 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="www\css\bootstrap-theme.css.map" />
+    <None Include="www\css\bootstrap.css.map" />
+    <None Include="www\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="www\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="www\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="www\js\jquery-2.1.0.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationIcon.png">

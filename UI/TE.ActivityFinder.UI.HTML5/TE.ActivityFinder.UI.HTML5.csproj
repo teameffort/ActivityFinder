@@ -115,6 +115,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Html\css\bootstrap-theme.css.map" />
+    <None Include="Html\css\bootstrap.css.map" />
+    <None Include="Html\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Html\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Html\fonts\glyphicons-halflings-regular.woff" />
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
@@ -144,10 +149,18 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Html\bootstrap.html" />
+    <Content Include="Html\css\bootstrap-theme.css" />
+    <Content Include="Html\css\bootstrap-theme.min.css" />
+    <Content Include="Html\css\bootstrap.css" />
+    <Content Include="Html\css\bootstrap.min.css" />
     <Content Include="Html\css\phone.css" />
+    <Content Include="Html\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Html\index.html">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Html\js\bootstrap.js" />
+    <Content Include="Html\js\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
