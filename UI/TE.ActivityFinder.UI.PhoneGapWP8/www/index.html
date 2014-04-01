@@ -49,6 +49,17 @@
             </div>
         </p>
     </div>
+    <div class="container">
+        <div class="table-responsive">
+            <table id="tblActivities" class="table table-bordered" style="visibility: hidden">
+                <thead><tr><th>Key</th><th>Name</th></tr></thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <script src="js/jquery-2.1.0.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/te.common.rest.service.js" type="text/javascript"></script>
@@ -64,8 +75,6 @@
         });
 
         $("#GetActivities").click(function () {
-            act_GetActivities();
-
             console.log("start timer");
 
             var loop = 1;
@@ -85,17 +94,27 @@
                     clearInterval(intervalId)
                 }
             }, 200);
+
+            act_GetActivities();
         })
 
         function ServiceSucceeded(msg) {
             if (DataType == "json") {
 
-                alert("act_GetActivities successful result:" + msg);
-
-
-
                 clearInterval(intervalId)
                 updateProgress(100);
+
+                $("#tblActivities").attr("style", "visibility: visible");
+                $.each(msg, function (name) {
+                    var method = name.Name;
+                    $.each(this, function (key, element) {
+                        console.log(key, element.Name);                       
+                        $("#tblActivities > tbody:last").append("<tr><td>" + key + "</td><td>" + element.Name + "</td></tr>");
+                    });
+                });
+
+                alert("Successfully called " + method);
+
             }
         }
 
