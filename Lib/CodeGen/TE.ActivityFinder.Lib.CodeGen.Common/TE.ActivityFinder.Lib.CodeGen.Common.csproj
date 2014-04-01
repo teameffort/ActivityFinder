@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{428E42B6-3B2B-4700-ADC9-3C7DAFF3B21E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{2403F32E-EBBA-42DE-BEB3-75165D3A0541}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TE.ActivityFinder.Lib.CodeGen.Console</RootNamespace>
-    <AssemblyName>TE.ActivityFinder.Lib.CodeGen.Console</AssemblyName>
+    <RootNamespace>TE.ActivityFinder.Lib.CodeGen.Common</RootNamespace>
+    <AssemblyName>TE.ActivityFinder.Lib.CodeGen.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,17 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="CodeGenAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TE.ActivityFinder.Lib.CodeGen.JSService\TE.ActivityFinder.Lib.CodeGen.JSService.csproj">
-      <Project>{3d349fd0-7ddb-4746-a871-37464494f612}</Project>
-      <Name>TE.ActivityFinder.Lib.CodeGen.JSService</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
