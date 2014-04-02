@@ -17,7 +17,7 @@ namespace TE.ActivityFinder.UT
         public void TestMethod_act_GetActivityByIdBLL()
         {
             var result = new ActivityFinder.BLL.ActivityBLL().act_GetActivityById(3);
-            Assert.IsTrue(result.Count > 0);
+            Assert.IsTrue(result != null);
         }
     }
 }
