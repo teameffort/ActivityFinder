@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TE.ActivityFinder.Lib.CodeG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TE.ActivityFinder.Lib.CodeGen.Common", "CodeGen\TE.ActivityFinder.Lib.CodeGen.Common\TE.ActivityFinder.Lib.CodeGen.Common.csproj", "{2403F32E-EBBA-42DE-BEB3-75165D3A0541}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeGen", "CodeGen", "{DE2F492D-349C-4E69-8300-569497D7B8BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2403F32E-EBBA-42DE-BEB3-75165D3A0541} = {DE2F492D-349C-4E69-8300-569497D7B8BF}
+		{428E42B6-3B2B-4700-ADC9-3C7DAFF3B21E} = {DE2F492D-349C-4E69-8300-569497D7B8BF}
+		{3D349FD0-7DDB-4746-A871-37464494F612} = {DE2F492D-349C-4E69-8300-569497D7B8BF}
 	EndGlobalSection
 EndGlobal
