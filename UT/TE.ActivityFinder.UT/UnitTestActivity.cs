@@ -19,5 +19,12 @@ namespace TE.ActivityFinder.UT
             var result = new ActivityFinder.BLL.ActivityBLL().act_GetActivityById(3);
             Assert.IsTrue(result != null);
         }
+
+        [TestMethod]
+        public void TestMethod_loc_InsertLocationBLL()
+        {
+            var result = new ActivityFinder.BLL.ActivityBLL().loc_InsertLocation("TestLocation","1","2");
+            Assert.IsTrue(result);
+        }
     }
 }
