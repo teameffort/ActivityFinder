@@ -7,8 +7,8 @@
     <ProjectGuid>{3D349FD0-7DDB-4746-A871-37464494F612}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TE.ActivityFinder.Lib.CodeGen.JSService</RootNamespace>
-    <AssemblyName>TE.ActivityFinder.Lib.CodeGen.JSService</AssemblyName>
+    <RootNamespace>Te.ActivityFinder.Lib.CodeGen.JSService</RootNamespace>
+    <AssemblyName>Te.ActivityFinder.Lib.CodeGen.JSService</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,9 +43,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TE.ActivityFinder.Lib.CodeGen.Common\TE.ActivityFinder.Lib.CodeGen.Common.csproj">
+    <ProjectReference Include="..\TE.ActivityFinder.Lib.CodeGen.Common\Te.ActivityFinder.Lib.CodeGen.Common.csproj">
       <Project>{2403f32e-ebba-42de-beb3-75165d3a0541}</Project>
-      <Name>TE.ActivityFinder.Lib.CodeGen.Common</Name>
+      <Name>Te.ActivityFinder.Lib.CodeGen.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

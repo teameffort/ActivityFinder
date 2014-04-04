@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Configuration;
+using Te.ActivityFinder.Dal;
 
-namespace TE.ActivityFinder.DAL
+namespace ActivityFinder.DAL
 {
     public class Context : IDisposable
     {
@@ -15,7 +16,7 @@ namespace TE.ActivityFinder.DAL
             {
                 if (_connectionString == null) 
                 {
-                    _connectionString = ConfigurationManager.ConnectionStrings["TE.ActivityFinder.DAL.Properties.Settings.TE_ActivityFinder_DBConnectionString"].ConnectionString;
+                    _connectionString = ConfigurationManager.ConnectionStrings["Te.ActivityFinder.DAL.Properties.Settings.TE_ActivityFinder_DBConnectionString"].ConnectionString;
                 }
                 return _connectionString; 
             }

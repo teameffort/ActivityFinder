@@ -5,16 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TE.ActivityFinder.Lib.CodeGen.Console
+namespace Te.ActivityFinder.Lib.CodeGen.Console
 {
     class Program
     {
         static void Main(string[] args)
         {
             //args = new string[5];
-            //args[0] = @"C:\GitHub\TE.ActivityFinder\WCF\TE.ActivityFinder.WCF\bin\"; //assembly path to reflect
-            //args[1] = "WCF"; //service type 
-            //args[2] = "http://10.211.55.3/TE.ActivityFinder.WCF/"; //service url
+            //args[0] = @"C:\GitHub\TE.ActivityFinder\Core\Te.ActivityFinder.Core\bin\"; //assembly path to reflect
+            //args[1] = "Core"; //service type 
+            //args[2] = "http://http://localhost:19083/"; //service url
             //args[3] = "json"; //response format
             //args[4] = @"c:\temp\"; //output file
 

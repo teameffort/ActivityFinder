@@ -7,8 +7,8 @@
     <ProjectGuid>{2403F32E-EBBA-42DE-BEB3-75165D3A0541}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TE.ActivityFinder.Lib.CodeGen.Common</RootNamespace>
-    <AssemblyName>TE.ActivityFinder.Lib.CodeGen.Common</AssemblyName>
+    <RootNamespace>Te.ActivityFinder.Lib.CodeGen.Common</RootNamespace>
+    <AssemblyName>Te.ActivityFinder.Lib.CodeGen.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

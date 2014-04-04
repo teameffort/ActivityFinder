@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TE.ActivityFinder.Lib.CodeGen.Common
+namespace Te.ActivityFinder.Lib.CodeGen.Common
 {
     public class CodeGenAttributes : Attribute
     {

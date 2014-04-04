@@ -1,49 +1,33 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TE.ActivityFinder.DB" Class="ActivityDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=197.242.147.178;Initial Catalog=TE.ActivityFinder.DB;Persist Security Info=True;User ID=teameffort" SettingsObjectName="TE.ActivityFinder.DAL.Properties.Settings" SettingsPropertyName="TE_ActivityFinder_DBConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.act_Activity" Member="act_Activities">
-    <Type Name="act_Activity">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Te.ActivityFinder" Class="ActivityDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=197.242.147.178;Initial Catalog=Te.ActivityFinder;User ID=teameffort" SettingsObjectName="Te.ActivityFinder.Dal.Properties.Settings" SettingsPropertyName="Te_ActivityFinderConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Activity" Member="Activities">
+    <Type Name="Activity">
       <Column Name="ActivityId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="ActivityTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActivityCategoryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="LocationId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="StartDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="EndDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Association Name="act_ActivityType_act_Activity" Member="act_ActivityType" ThisKey="ActivityTypeId" OtherKey="ActivityTypeId" Type="act_ActivityType" IsForeignKey="true" />
-      <Association Name="loc_Location_act_Activity" Member="loc_Location" ThisKey="LocationId" OtherKey="LocationId" Type="loc_Location" IsForeignKey="true" />
+      <Association Name="ActivityCategory_Activity" Member="ActivityCategory" ThisKey="ActivityCategoryId" OtherKey="ActivityCategoryId" Type="ActivityCategory" IsForeignKey="true" />
+      <Association Name="ActivityType_Activity" Member="ActivityType" ThisKey="ActivityTypeId" OtherKey="ActivityTypeId" Type="ActivityType" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.act_ActivityType" Member="act_ActivityTypes">
-    <Type Name="act_ActivityType">
+  <Table Name="dbo.ActivityCategory" Member="ActivityCategories">
+    <Type Name="ActivityCategory">
+      <Column Name="ActivityCategoryId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="ActivityCategory_Activity" Member="Activities" ThisKey="ActivityCategoryId" OtherKey="ActivityCategoryId" Type="Activity" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ActivityType" Member="ActivityTypes">
+    <Type Name="ActivityType">
       <Column Name="ActivityTypeId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Type" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
-      <Association Name="act_ActivityType_act_Activity" Member="act_Activities" ThisKey="ActivityTypeId" OtherKey="ActivityTypeId" Type="act_Activity" />
-    </Type>
-  </Table>
-  <Table Name="dbo.loc_Location" Member="loc_Locations">
-    <Type Name="loc_Location">
-      <Column Name="LocationId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Latitude" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Longitude" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="loc_Location_act_Activity" Member="act_Activities" ThisKey="LocationId" OtherKey="LocationId" Type="act_Activity" />
-    </Type>
-  </Table>
-  <Function Name="dbo.act_GetActivities" Method="act_GetActivities">
-    <ElementType Name="act_GetActivitiesResult">
-      <Column Name="ActivityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ActivityTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="LocationId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="StartDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="EndDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.loc_InsLocation" Method="loc_InsLocation">
-    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="Latitude" Parameter="latitude" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="Longitude" Parameter="longitude" Type="System.String" DbType="VarChar(50)" />
-    <Return Type="System.Int32" />
-  </Function>
+      <Association Name="ActivityType_Activity" Member="Activities" ThisKey="ActivityTypeId" OtherKey="ActivityTypeId" Type="Activity" />
+    </Type>
+  </Table>
 </Database>

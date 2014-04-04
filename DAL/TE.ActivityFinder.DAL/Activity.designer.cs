@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TE.ActivityFinder.DAL
+namespace Te.ActivityFinder.Dal
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -23,7 +23,7 @@ namespace TE.ActivityFinder.DAL
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="TE.ActivityFinder.DB")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Te.ActivityFinder")]
 	public partial class ActivityDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -31,19 +31,19 @@ namespace TE.ActivityFinder.DAL
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void Insertact_Activity(act_Activity instance);
-    partial void Updateact_Activity(act_Activity instance);
-    partial void Deleteact_Activity(act_Activity instance);
-    partial void Insertact_ActivityType(act_ActivityType instance);
-    partial void Updateact_ActivityType(act_ActivityType instance);
-    partial void Deleteact_ActivityType(act_ActivityType instance);
-    partial void Insertloc_Location(loc_Location instance);
-    partial void Updateloc_Location(loc_Location instance);
-    partial void Deleteloc_Location(loc_Location instance);
+    partial void InsertActivity(Activity instance);
+    partial void UpdateActivity(Activity instance);
+    partial void DeleteActivity(Activity instance);
+    partial void InsertActivityCategory(ActivityCategory instance);
+    partial void UpdateActivityCategory(ActivityCategory instance);
+    partial void DeleteActivityCategory(ActivityCategory instance);
+    partial void InsertActivityType(ActivityType instance);
+    partial void UpdateActivityType(ActivityType instance);
+    partial void DeleteActivityType(ActivityType instance);
     #endregion
 		
 		public ActivityDataContext() : 
-				base(global::TE.ActivityFinder.DAL.Properties.Settings.Default.TE_ActivityFinder_DBConnectionString, mappingSource)
+				base(global::Te.ActivityFinder.Dal.Properties.Settings.Default.Te_ActivityFinderConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -72,48 +72,34 @@ namespace TE.ActivityFinder.DAL
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<act_Activity> act_Activities
+		public System.Data.Linq.Table<Activity> Activities
 		{
 			get
 			{
-				return this.GetTable<act_Activity>();
+				return this.GetTable<Activity>();
 			}
 		}
 		
-		public System.Data.Linq.Table<act_ActivityType> act_ActivityTypes
+		public System.Data.Linq.Table<ActivityCategory> ActivityCategories
 		{
 			get
 			{
-				return this.GetTable<act_ActivityType>();
+				return this.GetTable<ActivityCategory>();
 			}
 		}
 		
-		public System.Data.Linq.Table<loc_Location> loc_Locations
+		public System.Data.Linq.Table<ActivityType> ActivityTypes
 		{
 			get
 			{
-				return this.GetTable<loc_Location>();
+				return this.GetTable<ActivityType>();
 			}
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.act_GetActivities")]
-		public ISingleResult<act_GetActivitiesResult> act_GetActivities()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<act_GetActivitiesResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.loc_InsLocation")]
-		public int loc_InsLocation([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="VarChar(50)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Latitude", DbType="VarChar(50)")] string latitude, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Longitude", DbType="VarChar(50)")] string longitude)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name, latitude, longitude);
-			return ((int)(result.ReturnValue));
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.act_Activity")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Activity")]
 	[global::System.Runtime.Serialization.DataContractAttribute()]
-	public partial class act_Activity : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class Activity : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -121,6 +107,8 @@ namespace TE.ActivityFinder.DAL
 		private int _ActivityId;
 		
 		private int _ActivityTypeId;
+		
+		private int _ActivityCategoryId;
 		
 		private int _LocationId;
 		
@@ -132,9 +120,9 @@ namespace TE.ActivityFinder.DAL
 		
 		private bool _IsActive;
 		
-		private EntityRef<act_ActivityType> _act_ActivityType;
+		private EntityRef<ActivityCategory> _ActivityCategory;
 		
-		private EntityRef<loc_Location> _loc_Location;
+		private EntityRef<ActivityType> _ActivityType;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -144,6 +132,8 @@ namespace TE.ActivityFinder.DAL
     partial void OnActivityIdChanged();
     partial void OnActivityTypeIdChanging(int value);
     partial void OnActivityTypeIdChanged();
+    partial void OnActivityCategoryIdChanging(int value);
+    partial void OnActivityCategoryIdChanged();
     partial void OnLocationIdChanging(int value);
     partial void OnLocationIdChanged();
     partial void OnNameChanging(string value);
@@ -156,7 +146,7 @@ namespace TE.ActivityFinder.DAL
     partial void OnIsActiveChanged();
     #endregion
 		
-		public act_Activity()
+		public Activity()
 		{
 			this.Initialize();
 		}
@@ -194,7 +184,7 @@ namespace TE.ActivityFinder.DAL
 			{
 				if ((this._ActivityTypeId != value))
 				{
-					if (this._act_ActivityType.HasLoadedOrAssignedValue)
+					if (this._ActivityType.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -207,8 +197,33 @@ namespace TE.ActivityFinder.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationId", DbType="Int NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivityCategoryId", DbType="Int NOT NULL")]
 		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public int ActivityCategoryId
+		{
+			get
+			{
+				return this._ActivityCategoryId;
+			}
+			set
+			{
+				if ((this._ActivityCategoryId != value))
+				{
+					if (this._ActivityCategory.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnActivityCategoryIdChanging(value);
+					this.SendPropertyChanging();
+					this._ActivityCategoryId = value;
+					this.SendPropertyChanged("ActivityCategoryId");
+					this.OnActivityCategoryIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationId", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public int LocationId
 		{
 			get
@@ -219,10 +234,6 @@ namespace TE.ActivityFinder.DAL
 			{
 				if ((this._LocationId != value))
 				{
-					if (this._loc_Location.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnLocationIdChanging(value);
 					this.SendPropertyChanging();
 					this._LocationId = value;
@@ -233,7 +244,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string Name
 		{
 			get
@@ -254,7 +265,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDT", DbType="DateTime NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.DateTime StartDT
 		{
 			get
@@ -275,7 +286,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDT", DbType="DateTime NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public System.DateTime EndDT
 		{
 			get
@@ -296,7 +307,7 @@ namespace TE.ActivityFinder.DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public bool IsActive
 		{
 			get
@@ -316,70 +327,70 @@ namespace TE.ActivityFinder.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="act_ActivityType_act_Activity", Storage="_act_ActivityType", ThisKey="ActivityTypeId", OtherKey="ActivityTypeId", IsForeignKey=true)]
-		public act_ActivityType act_ActivityType
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ActivityCategory_Activity", Storage="_ActivityCategory", ThisKey="ActivityCategoryId", OtherKey="ActivityCategoryId", IsForeignKey=true)]
+		public ActivityCategory ActivityCategory
 		{
 			get
 			{
-				return this._act_ActivityType.Entity;
+				return this._ActivityCategory.Entity;
 			}
 			set
 			{
-				act_ActivityType previousValue = this._act_ActivityType.Entity;
+				ActivityCategory previousValue = this._ActivityCategory.Entity;
 				if (((previousValue != value) 
-							|| (this._act_ActivityType.HasLoadedOrAssignedValue == false)))
+							|| (this._ActivityCategory.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._act_ActivityType.Entity = null;
-						previousValue.act_Activities.Remove(this);
+						this._ActivityCategory.Entity = null;
+						previousValue.Activities.Remove(this);
 					}
-					this._act_ActivityType.Entity = value;
+					this._ActivityCategory.Entity = value;
 					if ((value != null))
 					{
-						value.act_Activities.Add(this);
+						value.Activities.Add(this);
+						this._ActivityCategoryId = value.ActivityCategoryId;
+					}
+					else
+					{
+						this._ActivityCategoryId = default(int);
+					}
+					this.SendPropertyChanged("ActivityCategory");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ActivityType_Activity", Storage="_ActivityType", ThisKey="ActivityTypeId", OtherKey="ActivityTypeId", IsForeignKey=true)]
+		public ActivityType ActivityType
+		{
+			get
+			{
+				return this._ActivityType.Entity;
+			}
+			set
+			{
+				ActivityType previousValue = this._ActivityType.Entity;
+				if (((previousValue != value) 
+							|| (this._ActivityType.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ActivityType.Entity = null;
+						previousValue.Activities.Remove(this);
+					}
+					this._ActivityType.Entity = value;
+					if ((value != null))
+					{
+						value.Activities.Add(this);
 						this._ActivityTypeId = value.ActivityTypeId;
 					}
 					else
 					{
 						this._ActivityTypeId = default(int);
 					}
-					this.SendPropertyChanged("act_ActivityType");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="loc_Location_act_Activity", Storage="_loc_Location", ThisKey="LocationId", OtherKey="LocationId", IsForeignKey=true)]
-		public loc_Location loc_Location
-		{
-			get
-			{
-				return this._loc_Location.Entity;
-			}
-			set
-			{
-				loc_Location previousValue = this._loc_Location.Entity;
-				if (((previousValue != value) 
-							|| (this._loc_Location.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._loc_Location.Entity = null;
-						previousValue.act_Activities.Remove(this);
-					}
-					this._loc_Location.Entity = value;
-					if ((value != null))
-					{
-						value.act_Activities.Add(this);
-						this._LocationId = value.LocationId;
-					}
-					else
-					{
-						this._LocationId = default(int);
-					}
-					this.SendPropertyChanged("loc_Location");
+					this.SendPropertyChanged("ActivityType");
 				}
 			}
 		}
@@ -406,8 +417,8 @@ namespace TE.ActivityFinder.DAL
 		
 		private void Initialize()
 		{
-			this._act_ActivityType = default(EntityRef<act_ActivityType>);
-			this._loc_Location = default(EntityRef<loc_Location>);
+			this._ActivityCategory = default(EntityRef<ActivityCategory>);
+			this._ActivityType = default(EntityRef<ActivityType>);
 			OnCreated();
 		}
 		
@@ -419,9 +430,185 @@ namespace TE.ActivityFinder.DAL
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.act_ActivityType")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ActivityCategory")]
 	[global::System.Runtime.Serialization.DataContractAttribute()]
-	public partial class act_ActivityType : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class ActivityCategory : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ActivityCategoryId;
+		
+		private string _Name;
+		
+		private bool _IsActive;
+		
+		private EntitySet<Activity> _Activities;
+		
+		private bool serializing;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnActivityCategoryIdChanging(int value);
+    partial void OnActivityCategoryIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnIsActiveChanging(bool value);
+    partial void OnIsActiveChanged();
+    #endregion
+		
+		public ActivityCategory()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivityCategoryId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int ActivityCategoryId
+		{
+			get
+			{
+				return this._ActivityCategoryId;
+			}
+			set
+			{
+				if ((this._ActivityCategoryId != value))
+				{
+					this.OnActivityCategoryIdChanging(value);
+					this.SendPropertyChanging();
+					this._ActivityCategoryId = value;
+					this.SendPropertyChanged("ActivityCategoryId");
+					this.OnActivityCategoryIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public bool IsActive
+		{
+			get
+			{
+				return this._IsActive;
+			}
+			set
+			{
+				if ((this._IsActive != value))
+				{
+					this.OnIsActiveChanging(value);
+					this.SendPropertyChanging();
+					this._IsActive = value;
+					this.SendPropertyChanged("IsActive");
+					this.OnIsActiveChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ActivityCategory_Activity", Storage="_Activities", ThisKey="ActivityCategoryId", OtherKey="ActivityCategoryId")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4, EmitDefaultValue=false)]
+		public EntitySet<Activity> Activities
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._Activities.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._Activities;
+			}
+			set
+			{
+				this._Activities.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Activities(Activity entity)
+		{
+			this.SendPropertyChanging();
+			entity.ActivityCategory = this;
+		}
+		
+		private void detach_Activities(Activity entity)
+		{
+			this.SendPropertyChanging();
+			entity.ActivityCategory = null;
+		}
+		
+		private void Initialize()
+		{
+			this._Activities = new EntitySet<Activity>(new Action<Activity>(this.attach_Activities), new Action<Activity>(this.detach_Activities));
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ActivityType")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class ActivityType : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -430,7 +617,9 @@ namespace TE.ActivityFinder.DAL
 		
 		private string _Type;
 		
-		private EntitySet<act_Activity> _act_Activities;
+		private bool _IsActive;
+		
+		private EntitySet<Activity> _Activities;
 		
 		private bool serializing;
 		
@@ -442,9 +631,11 @@ namespace TE.ActivityFinder.DAL
     partial void OnActivityTypeIdChanged();
     partial void OnTypeChanging(string value);
     partial void OnTypeChanged();
+    partial void OnIsActiveChanging(bool value);
+    partial void OnIsActiveChanged();
     #endregion
 		
-		public act_ActivityType()
+		public ActivityType()
 		{
 			this.Initialize();
 		}
@@ -491,412 +682,8 @@ namespace TE.ActivityFinder.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="act_ActivityType_act_Activity", Storage="_act_Activities", ThisKey="ActivityTypeId", OtherKey="ActivityTypeId")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3, EmitDefaultValue=false)]
-		public EntitySet<act_Activity> act_Activities
-		{
-			get
-			{
-				if ((this.serializing 
-							&& (this._act_Activities.HasLoadedOrAssignedValues == false)))
-				{
-					return null;
-				}
-				return this._act_Activities;
-			}
-			set
-			{
-				this._act_Activities.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_act_Activities(act_Activity entity)
-		{
-			this.SendPropertyChanging();
-			entity.act_ActivityType = this;
-		}
-		
-		private void detach_act_Activities(act_Activity entity)
-		{
-			this.SendPropertyChanging();
-			entity.act_ActivityType = null;
-		}
-		
-		private void Initialize()
-		{
-			this._act_Activities = new EntitySet<act_Activity>(new Action<act_Activity>(this.attach_act_Activities), new Action<act_Activity>(this.detach_act_Activities));
-			OnCreated();
-		}
-		
-		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnDeserializing(StreamingContext context)
-		{
-			this.Initialize();
-		}
-		
-		[global::System.Runtime.Serialization.OnSerializingAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnSerializing(StreamingContext context)
-		{
-			this.serializing = true;
-		}
-		
-		[global::System.Runtime.Serialization.OnSerializedAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnSerialized(StreamingContext context)
-		{
-			this.serializing = false;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.loc_Location")]
-	[global::System.Runtime.Serialization.DataContractAttribute()]
-	public partial class loc_Location : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _LocationId;
-		
-		private string _Name;
-		
-		private string _Latitude;
-		
-		private string _Longitude;
-		
-		private EntitySet<act_Activity> _act_Activities;
-		
-		private bool serializing;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnLocationIdChanging(int value);
-    partial void OnLocationIdChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnLatitudeChanging(string value);
-    partial void OnLatitudeChanged();
-    partial void OnLongitudeChanging(string value);
-    partial void OnLongitudeChanged();
-    #endregion
-		
-		public loc_Location()
-		{
-			this.Initialize();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-		public int LocationId
-		{
-			get
-			{
-				return this._LocationId;
-			}
-			set
-			{
-				if ((this._LocationId != value))
-				{
-					this.OnLocationIdChanging(value);
-					this.SendPropertyChanging();
-					this._LocationId = value;
-					this.SendPropertyChanged("LocationId");
-					this.OnLocationIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Latitude", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-		public string Latitude
-		{
-			get
-			{
-				return this._Latitude;
-			}
-			set
-			{
-				if ((this._Latitude != value))
-				{
-					this.OnLatitudeChanging(value);
-					this.SendPropertyChanging();
-					this._Latitude = value;
-					this.SendPropertyChanged("Latitude");
-					this.OnLatitudeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Longitude", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-		public string Longitude
-		{
-			get
-			{
-				return this._Longitude;
-			}
-			set
-			{
-				if ((this._Longitude != value))
-				{
-					this.OnLongitudeChanging(value);
-					this.SendPropertyChanging();
-					this._Longitude = value;
-					this.SendPropertyChanged("Longitude");
-					this.OnLongitudeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="loc_Location_act_Activity", Storage="_act_Activities", ThisKey="LocationId", OtherKey="LocationId")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5, EmitDefaultValue=false)]
-		public EntitySet<act_Activity> act_Activities
-		{
-			get
-			{
-				if ((this.serializing 
-							&& (this._act_Activities.HasLoadedOrAssignedValues == false)))
-				{
-					return null;
-				}
-				return this._act_Activities;
-			}
-			set
-			{
-				this._act_Activities.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_act_Activities(act_Activity entity)
-		{
-			this.SendPropertyChanging();
-			entity.loc_Location = this;
-		}
-		
-		private void detach_act_Activities(act_Activity entity)
-		{
-			this.SendPropertyChanging();
-			entity.loc_Location = null;
-		}
-		
-		private void Initialize()
-		{
-			this._act_Activities = new EntitySet<act_Activity>(new Action<act_Activity>(this.attach_act_Activities), new Action<act_Activity>(this.detach_act_Activities));
-			OnCreated();
-		}
-		
-		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnDeserializing(StreamingContext context)
-		{
-			this.Initialize();
-		}
-		
-		[global::System.Runtime.Serialization.OnSerializingAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnSerializing(StreamingContext context)
-		{
-			this.serializing = true;
-		}
-		
-		[global::System.Runtime.Serialization.OnSerializedAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnSerialized(StreamingContext context)
-		{
-			this.serializing = false;
-		}
-	}
-	
-	[global::System.Runtime.Serialization.DataContractAttribute()]
-	public partial class act_GetActivitiesResult
-	{
-		
-		private int _ActivityId;
-		
-		private int _ActivityTypeId;
-		
-		private int _LocationId;
-		
-		private string _Name;
-		
-		private System.DateTime _StartDT;
-		
-		private System.DateTime _EndDT;
-		
-		private bool _IsActive;
-		
-		public act_GetActivitiesResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivityId", DbType="Int NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-		public int ActivityId
-		{
-			get
-			{
-				return this._ActivityId;
-			}
-			set
-			{
-				if ((this._ActivityId != value))
-				{
-					this._ActivityId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivityTypeId", DbType="Int NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-		public int ActivityTypeId
-		{
-			get
-			{
-				return this._ActivityTypeId;
-			}
-			set
-			{
-				if ((this._ActivityTypeId != value))
-				{
-					this._ActivityTypeId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationId", DbType="Int NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-		public int LocationId
-		{
-			get
-			{
-				return this._LocationId;
-			}
-			set
-			{
-				if ((this._LocationId != value))
-				{
-					this._LocationId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this._Name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDT", DbType="DateTime NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
-		public System.DateTime StartDT
-		{
-			get
-			{
-				return this._StartDT;
-			}
-			set
-			{
-				if ((this._StartDT != value))
-				{
-					this._StartDT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDT", DbType="DateTime NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
-		public System.DateTime EndDT
-		{
-			get
-			{
-				return this._EndDT;
-			}
-			set
-			{
-				if ((this._EndDT != value))
-				{
-					this._EndDT = value;
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public bool IsActive
 		{
 			get
@@ -907,9 +694,91 @@ namespace TE.ActivityFinder.DAL
 			{
 				if ((this._IsActive != value))
 				{
+					this.OnIsActiveChanging(value);
+					this.SendPropertyChanging();
 					this._IsActive = value;
+					this.SendPropertyChanged("IsActive");
+					this.OnIsActiveChanged();
 				}
 			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ActivityType_Activity", Storage="_Activities", ThisKey="ActivityTypeId", OtherKey="ActivityTypeId")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4, EmitDefaultValue=false)]
+		public EntitySet<Activity> Activities
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._Activities.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._Activities;
+			}
+			set
+			{
+				this._Activities.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Activities(Activity entity)
+		{
+			this.SendPropertyChanging();
+			entity.ActivityType = this;
+		}
+		
+		private void detach_Activities(Activity entity)
+		{
+			this.SendPropertyChanging();
+			entity.ActivityType = null;
+		}
+		
+		private void Initialize()
+		{
+			this._Activities = new EntitySet<Activity>(new Action<Activity>(this.attach_Activities), new Action<Activity>(this.detach_Activities));
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
 		}
 	}
 }

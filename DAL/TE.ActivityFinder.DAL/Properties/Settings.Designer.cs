@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TE.ActivityFinder.DAL.Properties {
+namespace Te.ActivityFinder.Dal.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -31,6 +31,17 @@ namespace TE.ActivityFinder.DAL.Properties {
         public string TE_ActivityFinder_DBConnectionString {
             get {
                 return ((string)(this["TE_ActivityFinder_DBConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=197.242.147.178;Initial Catalog=Te.ActivityFinder;User ID=teameffort;" +
+            "Password=@Team@Effort")]
+        public string Te_ActivityFinderConnectionString {
+            get {
+                return ((string)(this["Te_ActivityFinderConnectionString"]));
             }
         }
     }

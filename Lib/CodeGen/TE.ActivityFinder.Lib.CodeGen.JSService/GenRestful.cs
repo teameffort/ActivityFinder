@@ -5,9 +5,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using TE.ActivityFinder.Lib.CodeGen.Common;
+using Te.ActivityFinder.Lib.CodeGen.Common;
 
-namespace TE.ActivityFinder.Lib.CodeGen.JSService
+namespace Te.ActivityFinder.Lib.CodeGen.JSService
 {
     public class GenRestful
     {
@@ -97,7 +97,11 @@ namespace TE.ActivityFinder.Lib.CodeGen.JSService
             List<Type> TypeList;
 
             Console.WriteLine("CodeGen: load and reflect assembly: " + assemblyFile);
-            TypeList = Assembly.LoadFile(assemblyFile).GetTypes().Where(t => t.IsPublic).Where(t => !t.IsInterface).Where(t => !t.Name.Contains("Global")).ToList();
+            TypeList = Assembly.LoadFile(assemblyFile).GetTypes().Where
+                (t => t.IsPublic).Where
+                (t => !t.IsInterface).Where
+                (t => t.Name.Contains("Controller")).ToList();
+
             Console.WriteLine("CodeGen: found " + TypeList.Count() + " service(s)");
 
             sb.Append("// ====================================================================");
@@ -116,7 +120,20 @@ namespace TE.ActivityFinder.Lib.CodeGen.JSService
                     bool hasParam = false;
                     bool isFirst = true;
 
-                    sb.Append("function " + mi.Name + "(");
+                    if (mi.GetParameters().ToList().Count > 0)
+                    {
+                        sb.Append("function " + mi.Name + t.Name.Replace("Controller", string.Empty) + "By");
+                        foreach (ParameterInfo pi in mi.GetParameters())
+                        {
+                            sb.Append(pi.Name);                  
+                        }
+                        sb.Append("(");
+                    }
+                    else
+                    {
+                        sb.Append("function " + mi.Name + t.Name.Replace("Controller", string.Empty) + "(");
+                    }
+
                     foreach (ParameterInfo pi in mi.GetParameters())
                     {
                         hasParam = true;
@@ -138,7 +155,7 @@ namespace TE.ActivityFinder.Lib.CodeGen.JSService
                     }
 
                     sb.Append("\r\n\t");
-                    sb.Append("Url = " + @"""" + _serviceUrl + t.Name + ".svc/" + mi.Name);
+                    sb.Append("Url = " + @"""" + _serviceUrl + "api/" + t.Name.Replace("Controller", string.Empty));
 
                     if (mi.GetParameters().Count() > 0)
                     {
@@ -180,7 +197,10 @@ namespace TE.ActivityFinder.Lib.CodeGen.JSService
         private List<MethodInfo> GetMethodList(Type assemblyType)
         {
             var methodList = assemblyType.GetMethods().ToList().FindAll(mi => (mi.IsPublic && !mi.Name.Equals("ToString")
-                && !mi.Name.Equals("Equals") && !mi.Name.Equals("GetType") && !mi.Name.Equals("GetHashCode")));
+                && !mi.Name.Equals("Equals") && !mi.Name.Equals("GetType") && !mi.Name.Equals("GetHashCode")
+                && !mi.Name.Contains("get_") && !mi.Name.Contains("set_") && !mi.Name.Contains("Dispose")
+                && !mi.Name.Contains("ExecuteAsync")
+                ));
             Console.WriteLine("CodeGen: found " + methodList.Count() + " method(s)");
             return methodList;
         }
