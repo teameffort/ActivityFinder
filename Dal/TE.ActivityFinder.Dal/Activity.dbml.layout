@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Activity">
+  <DataContextMoniker Name="/ActivityDataContext" />
+  <nestedChildShapes>
+    <classShape Id="c97371e0-14ba-4685-aff2-d5647c1bc97a" absoluteBounds="6.25, 2.125, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/ActivityDataContext/Activity" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5b08c599-8e8d-414b-9fc7-2a55435dea53" absoluteBounds="6.265, 2.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d81fc8c8-bb77-4ea2-a496-39c30dded862" absoluteBounds="3.375, 3.125, 2, 1.3862939453125">
+      <DataClassMoniker Name="/ActivityDataContext/ActivityCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="32efeabd-fde2-4b69-b9aa-8cdfb2df13b2" absoluteBounds="3.39, 3.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.375 : 3.79890055338542); (6.25 : 3.79890055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ActivityDataContext/ActivityCategory/ActivityCategory_Activity" />
+      <nodes>
+        <classShapeMoniker Id="d81fc8c8-bb77-4ea2-a496-39c30dded862" />
+        <classShapeMoniker Id="c97371e0-14ba-4685-aff2-d5647c1bc97a" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="cbfafeb4-f3bd-4edb-b3c2-694937cd0cde" absoluteBounds="3, 0.625, 2, 1.3862939453125">
+      <DataClassMoniker Name="/ActivityDataContext/ActivityType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="10c9101e-c2d2-4949-ace6-5ad131a20811" absoluteBounds="3.015, 1.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5 : 1.31814697265625); (7.25 : 1.31814697265625); (7.25 : 2.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ActivityDataContext/ActivityType/ActivityType_Activity" />
+      <nodes>
+        <classShapeMoniker Id="cbfafeb4-f3bd-4edb-b3c2-694937cd0cde" />
+        <classShapeMoniker Id="c97371e0-14ba-4685-aff2-d5647c1bc97a" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
