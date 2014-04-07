@@ -169,7 +169,9 @@
     <Content Include="www\css\bootstrap.min.css" />
     <Content Include="www\css\jumbotron.css" />
     <Content Include="www\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="www\index.html" />
+    <Content Include="www\index.html">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="www\css\index.css" />
     <Content Include="www\js\bootstrap.js" />
     <Content Include="www\js\bootstrap.min.js" />
