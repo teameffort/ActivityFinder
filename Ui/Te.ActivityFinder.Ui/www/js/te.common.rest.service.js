@@ -4,7 +4,6 @@ var Data;
 var ContentType;
 var DataType;
 var ProcessData;
-var method;
 //Generic function to call WCF  Service
 
 function CallService() {
@@ -18,32 +17,19 @@ function CallService() {
         success: function (data) {//On Successfull service call
             ServiceSucceeded(data);
         },
-        error: ServiceFailed// When Service call fails
+        error: function (xhr, status, error) {
+            ServiceFailed(xhr, status, error)
+        }// When Service call fails
     });
 }
 
-function ServiceFailed(result) {
-    alert('Service call failed: ' + result.status + '' + result.statusText);
-    Type = null;
-    Url = null;
-    Data = null;
-    ContentType = null;
-    DataType = null;
-    ProcessData = null;
-}
-
-function ServiceFailed(xhr) {
-    if ($("#progressBar").length > 0) {
-        $("#progressBar").attr("class", "progress-bar progress-bar-danger");
+function ServiceFailed(xhr, status, error) {
+    if (status == "error") {
+        console.log("Error: " + error);
+        alert("Please check you're connected to the internet and that you can browse to: " + Url);
     }
-    alert("<bold>Problem calling URL: " + Url + " </bold>" + xhr.responseText);
-
-    //if (xhr.responseText) {
-    //    var err = xhr.responseText;
-    //    if (err)
-    //        error(err);
-    //    else
-    //        error({ Message: "Unknown server error." })
-    //}
-    //return;
+    else {
+        console.log("Error: " + error);
+        alert("Please check you're connected to the internet and that you can browse to: " + Url);
+    }
 }
