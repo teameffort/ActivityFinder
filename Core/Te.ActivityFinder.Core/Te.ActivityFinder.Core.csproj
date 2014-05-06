@@ -127,6 +127,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CodeGen\Te.ActivityFinder.Lib.CodeGen.Common.dll" />
+    <Content Include="CodeGen\Te.ActivityFinder.Lib.CodeGen.Console.exe" />
+    <Content Include="CodeGen\Te.ActivityFinder.Lib.CodeGen.JSService.dll" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -176,7 +179,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>$(SolutionDir)Lib\CodeGen\Te.ActivityFinder.Lib.CodeGen.Console\bin\Debug\Te.ActivityFinder.Lib.CodeGen.Console.exe $(ProjectDir)bin\ Core http://localhost:19083/ json $(SolutionDir)UI\TE.ActivityFinder.UI\www\js</PostBuildEvent>
+    <PostBuildEvent>$(SolutionDir)Core\Te.ActivityFinder.Core\CodeGen\Te.ActivityFinder.Lib.CodeGen.Console.exe $(ProjectDir)bin\ Core http://localhost:19083/ json $(SolutionDir)UI\TE.ActivityFinder.UI\www\js</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
