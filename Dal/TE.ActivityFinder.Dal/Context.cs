@@ -1,41 +1,40 @@
 ﻿using System;
 using System.Configuration;
-using Te.ActivityFinder.Dal;
 
-namespace ActivityFinder.DAL
+namespace Te.ActivityFinder.Dal
 {
     public class Context : IDisposable
     {
 
         #region Properties
 
-        private static string _connectionString;
+        private static string connectionString;
         public static string ConnectionString
         {
             get
             {
-                if (_connectionString == null) 
+                if (connectionString == null) 
                 {
-                    _connectionString = ConfigurationManager.ConnectionStrings["Te.ActivityFinder.DAL.Properties.Settings.TE_ActivityFinder_DBConnectionString"].ConnectionString;
+                    connectionString = ConfigurationManager.ConnectionStrings["Te.ActivityFinder.DAL.Properties.Settings.TE_ActivityFinder_DBConnectionString"].ConnectionString;
                 }
-                return _connectionString; 
+                return connectionString; 
             }
         }
 
-        private ActivityDataContext _activity;
+        private ActivityDataContext activity;
         public ActivityDataContext Activity
         {
             get
             {
-                if (_activity == null)
+                if (activity == null)
                 {
-                    _activity = new ActivityDataContext(ConnectionString);
+                    activity = new ActivityDataContext(ConnectionString);
                 }
-                return _activity;
+                return activity;
             }
             set
             {
-                _activity = value;
+                activity = value;
             }
         }
 
@@ -45,9 +44,9 @@ namespace ActivityFinder.DAL
 
         public void Dispose()
         {
-            if (_activity != null)
+            if (activity != null)
             {
-                _activity.Dispose();
+                activity.Dispose();
             }
         }
 

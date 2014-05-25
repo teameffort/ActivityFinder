@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using Te.ActivityFinder.Dal;
 
@@ -10,12 +8,12 @@ namespace Te.ActivityFinder.Core.Controllers
 {
     public class ActivityController : ApiController
     {
-        ActivityDataContext _context = new ActivityDataContext();
+        readonly ActivityDataContext context = new ActivityDataContext();
 
         // GET api/<controller>
         public List<Models.Activity> Get()
         {
-            var activities = from a in _context.Activities
+            var activities = from a in context.Activities
                              select new Models.Activity
                              {
                                  ActivityId = a.ActivityId,
